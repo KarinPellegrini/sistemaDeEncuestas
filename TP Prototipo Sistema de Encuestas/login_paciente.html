@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión - Paciente</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h2>Inicio de Sesión - Paciente</h2>
+  <form id="loginPacienteForm">
+    <label for="dni">DNI:</label>
+    <input type="text" id="dni" name="dni" required>
+    <label for="clave">Clave:</label>
+    <input type="password" id="clave" name="clave" required>
+    <button type="submit">Ingresar</button>
+  </form>
+  <p id="error-message" style="color: red;"></p>
+
+  <script src="script.js"></script>
+</body>
+</html>
