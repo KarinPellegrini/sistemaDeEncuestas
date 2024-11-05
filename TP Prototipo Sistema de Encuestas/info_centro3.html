@@ -3,44 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Información de la Zona</title>
+  <title>Encuestas - Centro de Salud Norte</title>
+  
+  <!-- Bootstrap CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="bg-light">
-
-  <div class="container text-center mt-5">
-    <h2>Información de la Zona</h2>
-    <div id="zoneInfo"></div>
-    <a href="index.html" class="btn btn-secondary mt-4">Cerrar sesión</a>
-  </div>
-
-  <script>
-    // Función para obtener los parámetros de la URL
-    function getQueryParams() {
-      const params = {};
-      const queryString = window.location.search.substring(1);
-      const regex = /([^&=]+)=([^&]*)/g;
-      let m;
-
-      while (m = regex.exec(queryString)) {
-        params[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
-      }
-      return params;
+  
+  <style>
+    .container {
+      max-width: 800px;
+      margin-top: 50px;
     }
+    .patient-list {
+      margin-bottom: 30px;
+    }
+    .patient-completed {
+      background-color: #d4edda;
+    }
+    .patient-not-completed {
+      background-color: #f8d7da;
+    }
+  </style>
+</head>
+<body class="bg-light" data-center="Centro de Salud Norte"> <!-- Este es el atributo que indica el centro -->
 
-    // Obtener parámetros de la URL
-    const params = getQueryParams();
-    const lat = params.lat;
-    const lng = params.lng;
+  <div class="container">
+    <h1 class="text-center mb-5">Pacientes del Centro de Salud Norte</h1>
 
-    // Mostrar información sobre la zona
-    const zoneInfo = document.getElementById('zoneInfo');
-    zoneInfo.innerHTML = `<p>Latitud: ${lat}</p><p>Longitud: ${lng}</p>`;
-  </script>
+    <div class="patient-list">
+      <h3>Pacientes que completaron la encuesta:</h3>
+      <ul class="list-group" id="completed-list">
+        <!-- Pacientes que completaron la encuesta serán insertados aquí -->
+      </ul>
+    </div>
+
+    <div class="patient-list">
+      <h3>Pacientes que no completaron la encuesta:</h3>
+      <ul class="list-group" id="not-completed-list">
+        <!-- Pacientes que no completaron la encuesta serán insertados aquí -->
+      </ul>
+    </div>
+    
+  </div>
 
   <!-- Bootstrap JS and dependencies -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Importar el archivo JavaScript -->
+  <script src="scriptEncuestasCentros.js"></script>
+
 </body>
 </html>
+

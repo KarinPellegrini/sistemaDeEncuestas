@@ -19,18 +19,21 @@
       border-radius: 5px;
     }
     .card-map {
-      height: 400px; /* Define la altura de la tarjeta contenedora */
+      height: 600px; /* Ajusta la altura de la tarjeta */
+      max-width: 800px; /* Puedes cambiar el ancho máximo */
+      width: 100%;
     }
   </style>
 </head>
-<body class="bg-light d-flex align-items-center" style="min-height: 100vh;">
+<body class="bg-light d-flex align-items-center justify-content-center" style="min-height: 100vh;">
 
   <div class="container text-center">
-    <div class="card p-4 card-map" style="max-width: 600px; width: 100%;">
+    <div class="card p-4 card-map">
       <h2 class="mb-4">Bienvenido, Coordinador!</h2>
       <p>A continuación se muestra el mapa con la información que necesitas:</p>
       <!-- Contenedor para el mapa -->
       <div id="map"></div>
+      <p>Haz click sobre los centros para obtener más información</p>
       <a href="index.html" class="btn btn-secondary mt-2">Cerrar sesión</a>
     </div>
   </div>
