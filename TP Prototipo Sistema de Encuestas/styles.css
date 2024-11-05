@@ -1,0 +1,46 @@
+/* Imagen de fondo */
+body {
+    background-image: url('https://img.freepik.com/free-photo/clipboard-stethoscope_23-2148519763.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  
+  /* Estilo para el contenedor principal */
+  .container {
+    background: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para dar profundidad */
+  }
+  
+  /* Estilo para el título */
+  h2 {
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  /* Estilos para los botones */
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 5px;
+  }
+  
