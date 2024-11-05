@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centro de Salud Sur - Reportes</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style>
+    .container {
+      margin-top: 30px;
+    }
+    .card {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <div class="container">
+    <h2>Respuestas del Centro: Centro de Salud Sur</h2>
+
+    <!-- Aquí se cargarán los datos -->
+    <div id="usersData"></div>
+
+    <!-- Botón para volver a la sección de reportes -->
+    <a href="../seccion_de_reportes.html" class="btn btn-secondary mt-4">Volver a la Sección de Reportes</a>
+  </div>
+
+  <!-- Script para cargar los datos -->
+  <script src="scriptReportesCentros.js"></script> <!-- Carga el script externo -->
+
+  <script>
+    // Cambia el nombre del centro a cargar
+    const centroBuscado = 'Centro de Salud Sur';
+    mostrarDatosCentro();
+  </script>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
