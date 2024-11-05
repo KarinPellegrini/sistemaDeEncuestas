@@ -13,6 +13,8 @@ body {
   
   /* Estilo para el contenedor principal */
   .container {
+    display: flex;
+    justify-content: center;
     background: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
     padding: 30px;
     border-radius: 10px;

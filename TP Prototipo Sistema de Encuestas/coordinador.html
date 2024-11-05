@@ -3,10 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paciente</title>
+  <title>Coordinador</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+  <style>
+    #map {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+    }
+    .card-map {
+      height: 400px; /* Define la altura de la tarjeta contenedora */
+    }
+  </style>
 </head>
-<body>
-  <p>hola coordinador</p>
+<body class="bg-light d-flex align-items-center" style="min-height: 100vh;">
+
+  <div class="container text-center">
+    <div class="card p-4 card-map" style="max-width: 600px; width: 100%;">
+      <h2 class="mb-4">Bienvenido, Coordinador!</h2>
+      <p>A continuación se muestra el mapa con la información que necesitas:</p>
+      <!-- Contenedor para el mapa -->
+      <div id="map"></div>
+      <a href="index.html" class="btn btn-secondary mt-2">Cerrar sesión</a>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+  <!-- Inicializar el mapa -->
+  <script>
+    // Crear el mapa y establecer la vista
+    var map = L.map('map').setView([51.515, -0.09], 13);
+
+    // Añadir el tile layer (capa del mapa)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Definir las zonas (coordenadas, mensajes de información y URLs)
+    var zones = [
+      { center: [51.505, -0.09], info: 'Centro 1: Hospital central.', infoUrl: 'info_centro1.html' }, // Zona 1
+      { center: [51.515, -0.1], info: 'Centro 2: Clínica San José.', infoUrl: 'info_centro2.html' }, // Zona 2
+      { center: [51.525, -0.08], info: 'Centro 3: Centro de Salud Norte.', infoUrl: 'info_centro3.html' }  // Zona 3
+    ];
+
+    // Añadir marcadores para las zonas
+    zones.forEach(zone => {
+      var marker = L.marker(zone.center).addTo(map)
+        .bindPopup(zone.info) // Muestra la información de la zona
+        .on('mouseover', function() {
+          this.openPopup(); // Abre el popup al pasar el mouse
+        })
+        .on('mouseout', function() {
+          this.closePopup(); // Cierra el popup al salir el mouse
+        })
+        .on('click', function() {
+          window.location.href = zone.infoUrl; // Redirigir a la página de información de la zona
+        });
+    });
+
+    // Calcular el rectángulo delimitador
+    var latitudes = zones.map(zone => zone.center[0]);
+    var longitudes = zones.map(zone => zone.center[1]);
+    
+    var minLat = Math.min(...latitudes);
+    var maxLat = Math.max(...latitudes);
+    var minLng = Math.min(...longitudes);
+    var maxLng = Math.max(...longitudes);
+    
+    // Calcular el centro del rectángulo
+    var centerLat = (minLat + maxLat) / 2;
+    var centerLng = (minLng + maxLng) / 2;
+
+    // Calcular la distancia máxima para establecer el radio
+    var maxDistance = Math.max(
+      map.distance([centerLat, centerLng], zones[0].center),
+      map.distance([centerLat, centerLng], zones[1].center),
+      map.distance([centerLat, centerLng], zones[2].center)
+    );
+
+    // Añadir un círculo que incluya las tres zonas
+    L.circle([centerLat, centerLng], {
+      color: 'blue',       // Color del círculo
+      fillColor: '#30f',   // Color de relleno
+      fillOpacity: 0.2,    // Opacidad del relleno
+      radius: maxDistance * 1.1  // Aumentar un poco el radio para asegurar que cubre todos los puntos
+    }).addTo(map);
+
+  </script>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+
+
+
+
