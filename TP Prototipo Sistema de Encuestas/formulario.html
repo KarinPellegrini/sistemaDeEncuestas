@@ -4,170 +4,197 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulario Médico</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <h1>Formulario de Evaluación Médica</h1>
-  <form action="submit_form.html" method="post">
-    <p>Por favor, califique cada pregunta del 1 al 10.</p>
+<body class="bg-light d-flex align-items-center" style="min-height: 100vh;">
 
-    <label for="pregunta1">1. ¿Cuál es su nivel de dolor en este momento?</label>
-    <select id="pregunta1" name="pregunta1">
-      <option value="" disabled selected>Seleccione una opción</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
+  <div class="container">
+    <h1 class="text-center mb-4">Formulario de Evaluación Médica</h1>
+    <form action="data.html" method="get" class="bg-white p-4 rounded shadow">
+      <p class="text-center">Por favor, califique cada pregunta del 1 al 10.</p>
 
-    <label for="pregunta2">2. ¿Cuál es su nivel de energía hoy?</label>
-    <select id="pregunta2" name="pregunta2">
-      <option value="" disabled selected>Seleccione una opción</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
+      <div class="form-group">
+        <label for="pregunta1">1. ¿Cuál es su nivel de dolor en este momento?</label>
+        <select id="pregunta1" name="pregunta1" class="form-control">
+          <option value="" disabled selected>Seleccione una opción</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
 
-    <label for="pregunta3">3. ¿Qué tan frecuente es su dificultad para dormir?</label>
-    <select id="pregunta3" name="pregunta3">
-      <option value="" disabled selected>Seleccione una opción</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
+      <!-- Repetir el bloque anterior para las siguientes preguntas -->
+      <!-- Puedes copiar y pegar este bloque y cambiar el ID y el texto según sea necesario -->
 
-    <label for="pregunta4">4. ¿Qué tan intensa es su ansiedad en general?</label>
-    <select id="pregunta4" name="pregunta4">
-      <option value="" disabled selected>Seleccione una opción</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
+      <div class="form-group">
+        <label for="pregunta2">2. ¿Cuál es su nivel de energía hoy?</label>
+        <select id="pregunta2" name="pregunta2" class="form-control">
+          <option value="" disabled selected>Seleccione una opción</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
 
-    <label for="pregunta5">5. ¿Qué tan frecuentemente tiene dificultades para concentrarse?</label>
-    <select id="pregunta5" name="pregunta5">
-      <option value="" disabled selected>Seleccione una opción</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
+      <div class="form-group">
+        <label for="pregunta3">3. ¿Qué tan frecuente es su dificultad para dormir?</label>
+        <select id="pregunta3" name="pregunta3" class="form-control">
+          <option value="" disabled selected>Seleccione una opción</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
 
-    <label for="pregunta6">6. ¿Cuál es su nivel de apetito?</label>
-    <select id="pregunta6" name="pregunta6">
-      <option value="" disabled selected>Seleccione una opción</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
+      <div class="form-group">
+        <label for="pregunta4">4. ¿Qué tan intensa es su ansiedad en general?</label>
+        <select id="pregunta4" name="pregunta4" class="form-control">
+          <option value="" disabled selected>Seleccione una opción</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
 
-    <label for="pregunta7">7. ¿Qué tan frecuentemente experimenta mareos?</label>
-    <select id="pregunta7" name="pregunta7">
-      <option value="" disabled selected>Seleccione una opción</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
+      <div class="form-group">
+        <label for="pregunta5">5. ¿Qué tan frecuentemente tiene dificultades para concentrarse?</label>
+        <select id="pregunta5" name="pregunta5" class="form-control">
+          <option value="" disabled selected>Seleccione una opción</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
 
-    <label for="pregunta8">8. ¿Qué tan intensa es su dificultad para respirar?</label>
-    <select id="pregunta8" name="pregunta8">
-      <option value="" disabled selected>Seleccione una opción</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
+      <div class="form-group">
+        <label for="pregunta6">6. ¿Cuál es su nivel de apetito?</label>
+        <select id="pregunta6" name="pregunta6" class="form-control">
+          <option value="" disabled selected>Seleccione una opción</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
 
-    <label for="pregunta9">9. ¿Cuál es su nivel de estrés diario?</label>
-    <select id="pregunta9" name="pregunta9">
-      <option value="" disabled selected>Seleccione una opción</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
+      <div class="form-group">
+        <label for="pregunta7">7. ¿Qué tan frecuentemente experimenta mareos?</label>
+        <select id="pregunta7" name="pregunta7" class="form-control">
+          <option value="" disabled selected>Seleccione una opción</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
 
-    <label for="pregunta10">10. ¿Qué tan satisfecho está con su salud en general?</label>
-    <select id="pregunta10" name="pregunta10">
-      <option value="" disabled selected>Seleccione una opción</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
-    </select>
+      <div class="form-group">
+        <label for="pregunta8">8. ¿Qué tan intensa es su dificultad para respirar?</label>
+        <select id="pregunta8" name="pregunta8" class="form-control">
+          <option value="" disabled selected>Seleccione una opción</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
 
-        <!-- Campo para comentarios -->
-        <br><br>
-        <label for="comentarios">Comentarios adicionales:</label>
-        <textarea id="comentarios" name="comentarios" rows="4" cols="50" placeholder="Escriba sus comentarios aquí..."></textarea>
+      <div class="form-group">
+        <label for="pregunta9">9. ¿Cuál es su nivel de estrés diario?</label>
+        <select id="pregunta9" name="pregunta9" class="form-control">
+          <option value="" disabled selected>Seleccione una opción</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
 
-    <br><br>
-    <button type="submit">Enviar</button>
-  </form>
+      <div class="form-group">
+        <label for="pregunta10">10. ¿Qué tan satisfecho está con su salud en general?</label>
+        <select id="pregunta10" name="pregunta10" class="form-control">
+          <option value="" disabled selected>Seleccione una opción</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">Enviar</button>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
