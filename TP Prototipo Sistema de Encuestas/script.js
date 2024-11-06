@@ -67,31 +67,40 @@ const data = {
 };
 
   
-  // Lógica para iniciar sesión del paciente
-  const loginPacienteForm = document.getElementById("loginPacienteForm");
-  if (loginPacienteForm) {
-    loginPacienteForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const dni = document.getElementById("dni").value;
-      const clave = document.getElementById("clave").value;
-      let userFound = false;
-  
-      data.zonas.forEach(zona => {
-        zona.centros_atencion.forEach(centro => {
-          centro.pacientes.forEach(paciente => {
-            if (paciente.datos_personales.dni === dni && paciente.clave === clave) {
-              userFound = true;
-              window.location.href = "paciente.html"; // Redirigir a la página del paciente
+ // Lógica para iniciar sesión del paciente
+const loginPacienteForm = document.getElementById("loginPacienteForm");
+if (loginPacienteForm) {
+  loginPacienteForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const dni = document.getElementById("dni").value;
+    const clave = document.getElementById("clave").value;
+    let userFound = false;
+
+    data.zonas.forEach(zona => {
+      zona.centros_atencion.forEach(centro => {
+        centro.pacientes.forEach(paciente => {
+          if (paciente.datos_personales.dni === dni && paciente.clave === clave) {
+            userFound = true;
+
+            // Redirigir a la página según el DNI
+            if (dni === "12345678") {
+              window.location.href = "paciente.html";  // Redirigir a paciente.html
+            } else if (dni === "87654321") {
+              window.location.href = "paciente_2.html"; // Redirigir a paciente2.html
+            } else {
+              window.location.href = "paciente.html";  // Redirigir a una página por defecto
             }
-          });
+          }
         });
       });
-  
-      if (!userFound) {
-        document.getElementById("error-message").innerText = "DNI o clave incorrecta. Intente de nuevo.";
-      }
     });
-  }
+
+    if (!userFound) {
+      document.getElementById("error-message").innerText = "DNI o clave incorrecta. Intente de nuevo.";
+    }
+  });
+}
+
   
 // Lógica para iniciar sesión del coordinador
 const loginCoordinadorForm = document.getElementById("loginCoordinadorForm");
