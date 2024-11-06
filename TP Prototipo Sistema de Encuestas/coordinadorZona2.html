@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coordinador</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+  <style>
+    #map {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+    }
+    .card-map {
+      height: 600px; /* Ajusta la altura de la tarjeta */
+      max-width: 800px; /* Puedes cambiar el ancho máximo */
+      width: 100%;
+    }
+  </style>
+</head>
+<body class="bg-light d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+
+  <div class="container text-center">
+    <div class="card p-4 card-map">
+      <h2 class="mb-4">Bienvenido, Coordinador!</h2>
+      <p>A continuación se muestra el mapa con la información que necesitas:</p>
+      <!-- Contenedor para el mapa -->
+      <div id="map"></div>
+      <p>Haz click sobre los centros para obtener más información</p>
+      
+      <!-- Nuevo botón de sección de reportes -->
+      <a href="seccion_de_reportes.html" class="btn btn-primary mt-3">Sección de Reportes</a>
+
+      <!-- Botón de cerrar sesión -->
+      <a href="index.html" class="btn btn-secondary mt-2">Cerrar sesión</a>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+  <!-- Inicializar el mapa -->
+  <script>
+    // Crear el mapa y establecer la vista inicial
+    var map = L.map('map').setView([51.55, -0.1], 14);
+
+    // Añadir el tile layer (capa del mapa)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Definir las zonas con centros (Hospital Norte y Clínica Este)
+    var zones = [
+      { center: [51.545, -0.09], info: 'Centro 5: Hospital Norte.', infoUrl: 'info_centro5.html' }, // Hospital Norte
+      { center: [51.555, -0.11], info: 'Centro 6: Clínica Este.', infoUrl: 'info_centro6.html' }  // Clínica Este
+    ];
+
+    // Añadir marcadores para las zonas
+    zones.forEach(zone => {
+      var marker = L.marker(zone.center).addTo(map)
+        .bindPopup(zone.info)
+        .on('mouseover', function() {
+          this.openPopup();
+        })
+        .on('mouseout', function() {
+          this.closePopup();
+        })
+        .on('click', function() {
+          window.location.href = zone.infoUrl;
+        });
+    });
+
+    // Calcular el centro entre ambos centros
+    var latitudes = zones.map(zone => zone.center[0]);
+    var longitudes = zones.map(zone => zone.center[1]);
+
+    var minLat = Math.min(...latitudes);
+    var maxLat = Math.max(...latitudes);
+    var minLng = Math.min(...longitudes);
+    var maxLng = Math.max(...longitudes);
+
+    // Calcular el centro del círculo
+    var centerLat = (minLat + maxLat) / 2;
+    var centerLng = (minLng + maxLng) / 2;
+
+    // Calcular la distancia máxima para establecer el radio
+    var maxDistance = Math.max(
+      map.distance([centerLat, centerLng], zones[0].center),
+      map.distance([centerLat, centerLng], zones[1].center)
+    );
+
+    // Añadir un círculo que incluya ambos centros
+    L.circle([centerLat, centerLng], {
+      color: 'green',       // Color del círculo
+      fillColor: '#3f3',    // Color de relleno
+      fillOpacity: 0.2,     // Opacidad del relleno
+      radius: maxDistance * 1.1  // Aumentar un poco el radio para asegurar que cubre todos los puntos
+    }).addTo(map).bindPopup(`
+      <b>Zona 2</b><br>
+      Centros:<br>
+      - Hospital Norte<br>
+      - Clínica Este<br>
+      Coordinador: Dra. Pérez
+    `);
+
+    // Ajustar el mapa para que ambos centros estén visibles
+    var allCenters = zones.map(zone => zone.center);
+    map.fitBounds(L.latLngBounds(allCenters), { padding: [50, 50] });
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

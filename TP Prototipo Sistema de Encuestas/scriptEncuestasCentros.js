@@ -106,6 +106,86 @@ const data = {
           ]
         }
       ]
+    },
+    {
+      "zona": "Zona Sur",
+      "id": 2,
+      "coordinador": {
+        "datos_personales": {
+          "nombre": "Dra.",
+          "apellido": "Pérez",
+          "email": "dra.perez@example.com"
+        },
+        "nro_legajo": "C002",
+        "clave": "draP123"
+      },
+      "centros_atencion": [
+        {
+          "nombre": "Hospital Norte",
+          "pacientes": [
+            {
+              "datos_personales": {
+                "nombre": "Carlos",
+                "apellido": "Gómez",
+                "dni": "12312312",
+                "email": "carlos.gomez@example.com"
+              },
+              "clave": "claveCarlos123",
+              "fecha_atencion": "2024-11-01",
+              "completoEncuesta": true
+            },
+            {
+              "datos_personales": {
+                "nombre": "Ana",
+                "apellido": "Fernández",
+                "dni": "23423423",
+                "email": "ana.fernandez@example.com"
+              },
+              "clave": "claveAna456",
+              "fecha_atencion": "2024-11-02",
+              "completoEncuesta": false
+            },
+            {
+              "datos_personales": {
+                "nombre": "Luis",
+                "apellido": "Martínez",
+                "dni": "34534534",
+                "email": "luis.martinez@example.com"
+              },
+              "clave": "claveLuis2024",
+              "fecha_atencion": "2024-11-03",
+              "completoEncuesta": false
+            }
+          ]
+        },
+        {
+          "nombre": "Clínica Este",
+          "pacientes": [
+            {
+              "datos_personales": {
+                "nombre": "Pedro",
+                "apellido": "Rodríguez",
+                "dni": "45645645",
+                "email": "pedro.rodriguez@example.com"
+              },
+              "clave": "clavePedro2024",
+              "fecha_atencion": "2024-10-28",
+              "completoEncuesta": true
+            },
+            {
+              "datos_personales": {
+                "nombre": "Lucía",
+                "apellido": "Gómez",
+                "dni": "56756756",
+                "email": "lucia.gomez@example.com"
+              },
+              "clave": "claveLucia321",
+              "fecha_atencion": "2024-11-04",
+              "completoEncuesta": false
+            }
+          ]
+        }
+      ]
     }
   ]
 };
@@ -120,7 +200,13 @@ function processPatientData() {
   const centerName = document.body.getAttribute('data-center');
 
   // Buscar en el JSON el centro de atención correspondiente con find
-  const foundCenter = data.zonas[0].centros_atencion.find(centro => centro.nombre === centerName);
+  let foundCenter = null;
+  data.zonas.forEach(zona => {
+    const centro = zona.centros_atencion.find(centro => centro.nombre === centerName);
+    if (centro) {
+      foundCenter = centro;
+    }
+  });
 
   if (foundCenter) {
     // Recorrer la lista de pacientes
@@ -138,7 +224,7 @@ function processPatientData() {
       } else {
         li.textContent = patientInfo;
         li.classList.add('patient-not-completed'); // Clase para el fondo rojo
-        
+
         // Crear el botón de enviar recordatorio
         const button = document.createElement('button');
         button.textContent = 'Enviar recordatorio';
@@ -156,3 +242,17 @@ function processPatientData() {
 
 // Llamar a la función para procesar y mostrar los pacientes cuando la página cargue
 document.addEventListener('DOMContentLoaded', processPatientData);
+
+// Lógica para redirigir a las páginas de los centros (info_centro4.html e info_centro5.html)
+function redirectToCenterInfo(centerName) {
+  switch (centerName) {
+    case 'Hospital Norte':
+      window.location.href = 'info_centro4.html'; // Redirigir a la página del centro 4
+      break;
+    case 'Clínica Este':
+      window.location.href = 'info_centro5.html'; // Redirigir a la página del centro 5
+      break;
+    default:
+      console.error('Centro de atención no válido: ' + centerName);
+  }
+}
