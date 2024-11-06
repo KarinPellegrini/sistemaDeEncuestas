@@ -191,15 +191,12 @@ const data = {
 };
 
 
-// Función que procesa los datos y construye la lista de pacientes
 function processPatientData() {
   const completedList = document.getElementById('completed-list');
   const notCompletedList = document.getElementById('not-completed-list');
 
-  // Obtener el centro de atención desde el atributo data-center del body
   const centerName = document.body.getAttribute('data-center');
 
-  // Buscar en el JSON el centro de atención correspondiente con find
   let foundCenter = null;
   data.zonas.forEach(zona => {
     const centro = zona.centros_atencion.find(centro => centro.nombre === centerName);
@@ -209,28 +206,24 @@ function processPatientData() {
   });
 
   if (foundCenter) {
-    // Recorrer la lista de pacientes
     foundCenter.pacientes.forEach(paciente => {
       const li = document.createElement('li');
       li.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
 
       const patientInfo = `${paciente.datos_personales.nombre} ${paciente.datos_personales.apellido} (DNI: ${paciente.datos_personales.dni}) - Fecha de atención: ${paciente.fecha_atencion}`;
 
-      // Si completó la encuesta
       if (paciente.completoEncuesta) {
         li.textContent = patientInfo;
-        li.classList.add('patient-completed'); // Clase para el fondo verde
+        li.classList.add('patient-completed'); 
         completedList.appendChild(li);
       } else {
         li.textContent = patientInfo;
-        li.classList.add('patient-not-completed'); // Clase para el fondo rojo
+        li.classList.add('patient-not-completed'); 
 
-        // Crear el botón de enviar recordatorio
         const button = document.createElement('button');
         button.textContent = 'Enviar recordatorio';
         button.classList.add('btn', 'btn-warning', 'btn-sm');
 
-        // Agregar el botón al elemento de la lista
         li.appendChild(button);
         notCompletedList.appendChild(li);
       }
@@ -240,17 +233,15 @@ function processPatientData() {
   }
 }
 
-// Llamar a la función para procesar y mostrar los pacientes cuando la página cargue
 document.addEventListener('DOMContentLoaded', processPatientData);
 
-// Lógica para redirigir a las páginas de los centros (info_centro4.html e info_centro5.html)
 function redirectToCenterInfo(centerName) {
   switch (centerName) {
     case 'Hospital Norte':
-      window.location.href = 'info_centro4.html'; // Redirigir a la página del centro 4
+      window.location.href = 'info_centro4.html'; 
       break;
     case 'Clínica Este':
-      window.location.href = 'info_centro5.html'; // Redirigir a la página del centro 5
+      window.location.href = 'info_centro5.html'; 
       break;
     default:
       console.error('Centro de atención no válido: ' + centerName);

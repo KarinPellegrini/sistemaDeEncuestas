@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Encuestas - Hospital Central</title>
-  
-  <!-- Bootstrap CSS -->
+
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   
   <style>
@@ -24,7 +23,7 @@
     }
   </style>
 </head>
-<body class="bg-light" data-center="Hospital Central"> <!-- Este es el atributo que indica el centro -->
+<body class="bg-light" data-center="Hospital Central"> 
 
   <div class="container">
     <h1 class="text-center mb-5">Pacientes del Hospital Central</h1>
@@ -32,27 +31,22 @@
     <div class="patient-list">
       <h3>Pacientes que completaron la encuesta:</h3>
       <ul class="list-group" id="completed-list">
-        <!-- Pacientes que completaron la encuesta serán insertados aquí -->
       </ul>
     </div>
 
     <div class="patient-list">
       <h3>Pacientes que no completaron la encuesta:</h3>
       <ul class="list-group" id="not-completed-list">
-        <!-- Pacientes que no completaron la encuesta serán insertados aquí -->
       </ul>
     </div>
     
   </div>
 
-  <!-- Bootstrap JS and dependencies -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-  <!-- Importar el archivo JavaScript -->
   <script src="scriptEncuestasCentros.js"></script>
 
 </body>
 </html>
-

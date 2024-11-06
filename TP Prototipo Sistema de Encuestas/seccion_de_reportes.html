@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sección de Reportes</title>
   
-  <!-- Bootstrap CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 
   <style>
@@ -38,25 +36,19 @@
         <li><b>Haz click sobre los cículos para obtener información de la zona</b></li>
       </ul>
 
-      <!-- Botón para volver al inicio -->
       <a href="index.html" class="btn btn-secondary mt-2">Volver al Inicio</a>
     </div>
   </div>
 
-  <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-  <!-- Inicializar el mapa -->
   <script>
-    // Crear el mapa sin vista inicial
     var map = L.map('map');
 
-    // Añadir el tile layer (capa del mapa)
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    // Definir las zonas con centros (coordenadas, mensajes de información y URLs)
     var zones = [
       { center: [51.505, -0.09], info: 'Centro 1: Hospital central.', infoUrl: './centrosParaSeccionDeReportes/hospitalCentral.html' },
       { center: [51.515, -0.1], info: 'Centro 2: Clínica San José.', infoUrl: './centrosParaSeccionDeReportes/clinicaSanJose.html' },
@@ -69,7 +61,6 @@
       { center: [51.575, -0.07], info: 'Centro 8: Clínica Oeste.', infoUrl: './centrosParaSeccionDeReportes/clinicaOeste.html' }
     ];
 
-    // Añadir marcadores para las zonas
     zones.forEach(zone => {
       var marker = L.marker(zone.center).addTo(map)
         .bindPopup(zone.info)
@@ -84,7 +75,6 @@
         });
     });
 
-    // Círculo para los primeros tres centros con popup de zona
     var zone1Centers = zones.slice(0, 3).map(zone => zone.center);
     var zone1Center = L.latLngBounds(zone1Centers).getCenter();
     var zone1Radius = Math.max(...zone1Centers.map(center => map.distance(zone1Center, center)));
@@ -103,7 +93,6 @@
       Coordinador: Dra. Lopez María
     `);
 
-    // Círculo para la nueva Zona 1 con popup de zona
     var zone2Centers = zones.slice(3, 5).map(zone => zone.center);
     var zone2Center = L.latLngBounds(zone2Centers).getCenter();
     var zone2Radius = Math.max(...zone2Centers.map(center => map.distance(zone2Center, center)));
@@ -121,7 +110,6 @@
       Coordinador: Dra. Pérez
     `);
 
-    // Círculo para la nueva Zona 2 con popup de zona
     var zone3Centers = zones.slice(5, 7).map(zone => zone.center);
     var zone3Center = L.latLngBounds(zone3Centers).getCenter();
     var zone3Radius = Math.max(...zone3Centers.map(center => map.distance(zone3Center, center)));
@@ -139,12 +127,10 @@
       Coordinador: Dr. Ramírez
     `);
 
-    // Ajustar el mapa para que todos los centros estén visibles
     var allCenters = zones.map(zone => zone.center);
     map.fitBounds(L.latLngBounds(allCenters), { padding: [50, 50] });
   </script>
 
-  <!-- Bootstrap JS and dependencies -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

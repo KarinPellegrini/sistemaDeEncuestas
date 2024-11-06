@@ -4,8 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hospital Central - Reportes</title>
-  
-  <!-- Bootstrap CSS -->
+
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   
   <style>
@@ -20,31 +19,24 @@
 <body class="bg-light">
 
   <div class="container">
-    <h2 id="tituloCentro"></h2> <!-- Título que se actualizará dinámicamente -->
+    <h2 id="tituloCentro"></h2> 
 
-    <!-- Aquí se cargarán los datos -->
     <div id="usersData"></div>
 
-    <!-- Botón para volver a la sección de reportes -->
     <a href="../seccion_de_reportes.html" class="btn btn-secondary mt-4">Volver a la Sección de Reportes</a>
   </div>
 
-  <!-- Script para cargar los datos -->
   <script src="scriptReportesCentros.js"></script> <!-- Carga el script externo -->
 
   <script>
-    // Obtener el nombre del centro desde la URL
     const urlParams = new URLSearchParams(window.location.search);
-    const centroBuscado = urlParams.get('centro') || "Hospital Central"; // Valor por defecto si no se pasa nada
+    const centroBuscado = urlParams.get('centro') || "Hospital Central"; 
 
-    // Cambiar el título del centro en la página
     document.getElementById('tituloCentro').innerText = `Respuestas del Centro: ${centroBuscado}`;
 
-    // Llamar a la función para mostrar los datos
-    mostrarDatosCentro(); // Llama la función definida en scriptReportesCentros.js
+    mostrarDatosCentro(); 
   </script>
 
-  <!-- Bootstrap JS and dependencies -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
